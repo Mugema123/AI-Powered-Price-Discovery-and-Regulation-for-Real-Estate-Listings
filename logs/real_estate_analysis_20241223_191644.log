@@ -1,0 +1,453 @@
+2024-12-23 19:16:44,253 - RealEstateAnalysis - INFO - Logger initialized. Log file: logs\real_estate_analysis_20241223_191644.log
+2024-12-23 19:16:44,254 - RealEstateAnalysis - INFO - Starting Real Estate Analysis Pipeline
+2024-12-23 19:16:44,254 - RealEstateAnalysis - INFO - Initializing components...
+2024-12-23 19:16:44,255 - RealEstateAnalysis.ModelTrainer - INFO - Initializing models
+2024-12-23 19:16:44,256 - RealEstateAnalysis - INFO - Starting data preprocessing...
+2024-12-23 19:16:44,256 - RealEstateAnalysis.DataPreprocessor - INFO - Starting data preprocessing pipeline
+2024-12-23 19:16:44,257 - RealEstateAnalysis.DataPreprocessor - INFO - Loading data from data/raw/Pune_Real_Estate_Data_1.xlsx
+2024-12-23 19:16:44,579 - RealEstateAnalysis.DataPreprocessor - INFO - Successfully loaded data with shape: (200, 18)
+2024-12-23 19:16:44,580 - RealEstateAnalysis.DataPreprocessor - INFO - Removing unnecessary features
+2024-12-23 19:16:44,581 - RealEstateAnalysis.DataPreprocessor - INFO - Removed columns: {'Sr. No.', 'Total TownShip Area in Acres', 'Location', 'Price in Millions'}
+2024-12-23 19:16:44,581 - RealEstateAnalysis.DataPreprocessor - INFO - Processing Price column
+2024-12-23 19:16:44,582 - RealEstateAnalysis.DataPreprocessor - INFO - NaN values in Price column: 1
+2024-12-23 19:16:44,583 - RealEstateAnalysis.DataPreprocessor - INFO - Filled NaN prices with median: 70.0
+2024-12-23 19:16:44,583 - RealEstateAnalysis.DataPreprocessor - INFO - Cleaning Property Area column
+2024-12-23 19:16:44,584 - RealEstateAnalysis.DataPreprocessor - INFO - Cleaning Property Type column
+2024-12-23 19:16:44,585 - RealEstateAnalysis.DataPreprocessor - INFO - Cleaning text columns
+2024-12-23 19:16:44,591 - RealEstateAnalysis.DataPreprocessor - INFO - Converting binary features
+2024-12-23 19:16:44,596 - RealEstateAnalysis.DataPreprocessor - INFO - Handling outliers
+2024-12-23 19:16:44,596 - RealEstateAnalysis.DataPreprocessor - INFO - Processing outliers for column: Property Area in Sq. Ft.
+2024-12-23 19:16:44,598 - RealEstateAnalysis.DataPreprocessor - INFO - Property Area in Sq. Ft. bounds - Lower: 113.00, Upper: 1671.80
+2024-12-23 19:16:44,599 - RealEstateAnalysis.DataPreprocessor - INFO - Number of outliers in Property Area in Sq. Ft.: 10
+2024-12-23 19:16:44,600 - RealEstateAnalysis.DataPreprocessor - INFO - Processing outliers for column: Price in lakhs
+2024-12-23 19:16:44,601 - RealEstateAnalysis.DataPreprocessor - INFO - Price in lakhs bounds - Lower: 13.19, Upper: 189.15
+2024-12-23 19:16:44,602 - RealEstateAnalysis.DataPreprocessor - INFO - Number of outliers in Price in lakhs: 10
+2024-12-23 19:16:44,603 - RealEstateAnalysis.DataPreprocessor - INFO - Data preprocessing completed successfully
+2024-12-23 19:16:44,604 - RealEstateAnalysis.DataPreprocessor - INFO - Final preprocessed data shape: (200, 14)
+2024-12-23 19:16:44,604 - RealEstateAnalysis - INFO - Shape after preprocessing: (200, 14)
+2024-12-23 19:16:44,605 - RealEstateAnalysis - INFO - Engineering features...
+2024-12-23 19:16:44,605 - RealEstateAnalysis.FeatureEngineer - INFO - Starting feature engineering pipeline
+2024-12-23 19:16:44,605 - RealEstateAnalysis.FeatureEngineer - INFO - Creating price by sub-area feature
+2024-12-23 19:16:44,608 - RealEstateAnalysis.FeatureEngineer - INFO - Extracting BHK numbers
+2024-12-23 19:16:44,609 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,609 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,610 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,611 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhkgrand': name 're' is not defined
+2024-12-23 19:16:44,611 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,611 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,612 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,612 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,612 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,612 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,612 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4 Bhk': name 're' is not defined
+2024-12-23 19:16:44,613 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,613 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '6 Bhk': name 're' is not defined
+2024-12-23 19:16:44,613 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,613 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,614 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,614 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,614 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,615 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,615 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,615 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,615 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,616 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,616 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,616 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,616 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,616 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,617 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,617 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,617 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,617 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,618 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,618 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,618 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,618 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,619 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,619 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,619 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,620 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,621 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,621 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,622 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,622 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,622 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,623 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,623 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,623 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,624 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,624 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,624 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,625 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,625 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,625 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,626 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,626 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,626 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,627 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,627 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,627 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,627 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,628 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,628 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,628 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,628 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,629 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,629 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,629 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,629 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4 Bhk': name 're' is not defined
+2024-12-23 19:16:44,630 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,630 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,630 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,630 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,631 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,631 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,631 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,631 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,632 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,632 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,632 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,632 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,632 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,633 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,633 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,633 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,633 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,634 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,634 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,634 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,634 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,634 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,635 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,635 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,635 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,636 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,637 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,637 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,637 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,638 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,638 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,639 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,639 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,639 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,639 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,640 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,640 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,640 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,640 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,641 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,641 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,641 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,641 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,641 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,642 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,642 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,642 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,642 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,643 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,643 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,643 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,643 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,643 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,644 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,644 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,644 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,645 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,645 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,645 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4 Bhk': name 're' is not defined
+2024-12-23 19:16:44,645 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,646 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,646 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,646 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,647 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,647 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,647 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,647 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,648 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,648 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,648 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,648 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,649 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,649 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,649 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,650 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,650 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,650 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,650 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,651 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,651 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,651 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,651 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,652 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,652 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,653 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,653 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,654 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,654 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,655 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,655 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,656 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,656 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,656 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,657 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,657 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,657 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,658 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,658 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,658 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,658 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4 Bhk': name 're' is not defined
+2024-12-23 19:16:44,659 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,659 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,659 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,659 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,660 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,660 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,660 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,660 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,661 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,661 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,661 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,661 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,662 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,662 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,662 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,662 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4.5 Bhk': name 're' is not defined
+2024-12-23 19:16:44,662 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,663 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,663 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,663 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,663 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,664 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,664 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '1 Bhk': name 're' is not defined
+2024-12-23 19:16:44,664 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,664 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,665 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,665 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,665 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '4 Bhk': name 're' is not defined
+2024-12-23 19:16:44,666 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,666 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '3 Bhk': name 're' is not defined
+2024-12-23 19:16:44,666 - RealEstateAnalysis.FeatureEngineer - WARNING - Error extracting BHK number from '2 Bhk': name 're' is not defined
+2024-12-23 19:16:44,667 - RealEstateAnalysis.FeatureEngineer - INFO - Initial shape: (200, 16)
+2024-12-23 19:16:44,667 - RealEstateAnalysis.FeatureEngineer - INFO - Processing description text with TF-IDF
+2024-12-23 19:16:44,678 - RealEstateAnalysis.FeatureEngineer - INFO - Created 10 TF-IDF features
+2024-12-23 19:16:44,679 - RealEstateAnalysis.FeatureEngineer - INFO - Shape after description processing: (200, 26)
+2024-12-23 19:16:44,680 - RealEstateAnalysis.FeatureEngineer - INFO - Handling categorical features
+2024-12-23 19:16:44,682 - RealEstateAnalysis.FeatureEngineer - INFO - Shape after categorical handling: (200, 26)
+2024-12-23 19:16:44,684 - RealEstateAnalysis.FeatureEngineer - INFO - Filled NaN values in BHK_number with median: 0.0
+2024-12-23 19:16:44,685 - RealEstateAnalysis.FeatureEngineer - INFO - Feature engineering completed successfully
+2024-12-23 19:16:44,686 - RealEstateAnalysis.FeatureEngineer - INFO - Final engineered data shape: (200, 25)
+2024-12-23 19:16:44,686 - RealEstateAnalysis - INFO - Shape after feature engineering: (200, 25)
+2024-12-23 19:16:44,687 - RealEstateAnalysis - INFO - Cleaning data...
+2024-12-23 19:16:44,688 - RealEstateAnalysis - INFO - Shape before NaN removal: (200, 25)
+2024-12-23 19:16:44,688 - RealEstateAnalysis - INFO - Shape after NaN removal: (200, 25)
+2024-12-23 19:16:44,690 - RealEstateAnalysis - INFO - Final X shape: (200, 24)
+2024-12-23 19:16:44,690 - RealEstateAnalysis - INFO - Final y shape: (200,)
+2024-12-23 19:16:44,690 - RealEstateAnalysis - INFO - Splitting data...
+2024-12-23 19:16:44,690 - RealEstateAnalysis.ModelTrainer - INFO - Splitting data with test_size=0.2
+2024-12-23 19:16:44,691 - RealEstateAnalysis.ModelTrainer - INFO - Train set size: (160, 24), Test set size: (40, 24)
+2024-12-23 19:16:44,692 - RealEstateAnalysis - INFO - Training set shape: (160, 24)
+2024-12-23 19:16:44,692 - RealEstateAnalysis - INFO - Test set shape: (40, 24)
+2024-12-23 19:16:44,692 - RealEstateAnalysis - INFO - Training models...
+2024-12-23 19:16:44,692 - RealEstateAnalysis.ModelTrainer - INFO - Starting model training
+2024-12-23 19:16:44,692 - RealEstateAnalysis.ModelTrainer - INFO - Training XGBoost
+2024-12-23 19:16:45,554 - RealEstateAnalysis.ModelTrainer - INFO - XGBoost training completed
+2024-12-23 19:16:45,555 - RealEstateAnalysis.ModelTrainer - INFO - Training LightGBM
+2024-12-23 19:16:45,698 - RealEstateAnalysis.ModelTrainer - INFO - LightGBM training completed
+2024-12-23 19:16:45,699 - RealEstateAnalysis.ModelTrainer - INFO - Training MLP
+2024-12-23 19:16:46,690 - RealEstateAnalysis.ModelTrainer - INFO - MLP training completed
+2024-12-23 19:16:46,690 - RealEstateAnalysis.ModelTrainer - INFO - Training Lasso
+2024-12-23 19:16:46,693 - RealEstateAnalysis.ModelTrainer - INFO - Lasso training completed
+2024-12-23 19:16:46,694 - RealEstateAnalysis.ModelTrainer - INFO - Training Ridge
+2024-12-23 19:16:46,695 - RealEstateAnalysis.ModelTrainer - INFO - Ridge training completed
+2024-12-23 19:16:46,696 - RealEstateAnalysis.ModelTrainer - INFO - Training CatBoost
+2024-12-23 19:16:46,976 - RealEstateAnalysis.ModelTrainer - INFO - CatBoost training completed
+2024-12-23 19:16:46,976 - RealEstateAnalysis - INFO - Evaluating models...
+2024-12-23 19:16:46,976 - RealEstateAnalysis.ModelEvaluator - INFO - Starting evaluation of all models
+2024-12-23 19:16:46,977 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating XGBoost
+2024-12-23 19:16:46,999 - RealEstateAnalysis.ModelEvaluator - INFO - XGBoost evaluation completed
+2024-12-23 19:16:47,000 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 0.01, RMSE: 0.02, R2: 1.0000
+2024-12-23 19:16:47,000 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 6.68, RMSE: 9.41, R2: 0.9592
+2024-12-23 19:16:47,001 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating LightGBM
+2024-12-23 19:16:47,010 - RealEstateAnalysis.ModelEvaluator - INFO - LightGBM evaluation completed
+2024-12-23 19:16:47,011 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 7.06, RMSE: 10.04, R2: 0.9470
+2024-12-23 19:16:47,011 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 7.79, RMSE: 10.84, R2: 0.9458
+2024-12-23 19:16:47,011 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating MLP
+2024-12-23 19:16:47,018 - RealEstateAnalysis.ModelEvaluator - INFO - MLP evaluation completed
+2024-12-23 19:16:47,019 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 8.42, RMSE: 13.05, R2: 0.9103
+2024-12-23 19:16:47,019 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 10.67, RMSE: 13.54, R2: 0.9154
+2024-12-23 19:16:47,020 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating Lasso
+2024-12-23 19:16:47,025 - RealEstateAnalysis.ModelEvaluator - INFO - Lasso evaluation completed
+2024-12-23 19:16:47,026 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 11.08, RMSE: 17.11, R2: 0.8460
+2024-12-23 19:16:47,026 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 10.31, RMSE: 13.75, R2: 0.9128
+2024-12-23 19:16:47,026 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating Ridge
+2024-12-23 19:16:47,030 - RealEstateAnalysis.ModelEvaluator - INFO - Ridge evaluation completed
+2024-12-23 19:16:47,031 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 10.83, RMSE: 16.43, R2: 0.8580
+2024-12-23 19:16:47,031 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 9.80, RMSE: 12.79, R2: 0.9246
+2024-12-23 19:16:47,031 - RealEstateAnalysis.ModelEvaluator - INFO - Evaluating CatBoost
+2024-12-23 19:16:47,041 - RealEstateAnalysis.ModelEvaluator - INFO - CatBoost evaluation completed
+2024-12-23 19:16:47,041 - RealEstateAnalysis.ModelEvaluator - INFO - Train metrics - MAE: 1.72, RMSE: 2.22, R2: 0.9974
+2024-12-23 19:16:47,042 - RealEstateAnalysis.ModelEvaluator - INFO - Test metrics - MAE: 8.03, RMSE: 12.46, R2: 0.9284
+2024-12-23 19:16:47,042 - RealEstateAnalysis.ModelEvaluator - INFO - Model evaluation completed for all models
+2024-12-23 19:16:47,042 - RealEstateAnalysis - INFO - 
+==================================================
+2024-12-23 19:16:47,042 - RealEstateAnalysis - INFO - DETAILED MODEL PERFORMANCE METRICS
+2024-12-23 19:16:47,043 - RealEstateAnalysis - INFO - ==================================================
+2024-12-23 19:16:47,044 - RealEstateAnalysis - INFO - 
+Model: XGBoost
+2024-12-23 19:16:47,044 - RealEstateAnalysis - INFO - --------------
+2024-12-23 19:16:47,045 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,045 - RealEstateAnalysis - INFO -   MAE:  0.01 lakhs
+2024-12-23 19:16:47,045 - RealEstateAnalysis - INFO -   RMSE: 0.02 lakhs
+2024-12-23 19:16:47,046 - RealEstateAnalysis - INFO -   R2:   1.0000
+2024-12-23 19:16:47,046 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,046 - RealEstateAnalysis - INFO -   MAE:  6.68 lakhs
+2024-12-23 19:16:47,046 - RealEstateAnalysis - INFO -   RMSE: 9.41 lakhs
+2024-12-23 19:16:47,047 - RealEstateAnalysis - INFO -   R2:   0.9592
+2024-12-23 19:16:47,047 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,047 - RealEstateAnalysis - INFO -   RMSE Difference: 47932.5% (overfit)
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO - 
+Model: LightGBM
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO - ---------------
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO -   MAE:  7.06 lakhs
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO -   RMSE: 10.04 lakhs
+2024-12-23 19:16:47,049 - RealEstateAnalysis - INFO -   R2:   0.9470
+2024-12-23 19:16:47,050 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,050 - RealEstateAnalysis - INFO -   MAE:  7.79 lakhs
+2024-12-23 19:16:47,050 - RealEstateAnalysis - INFO -   RMSE: 10.84 lakhs
+2024-12-23 19:16:47,051 - RealEstateAnalysis - INFO -   R2:   0.9458
+2024-12-23 19:16:47,052 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,052 - RealEstateAnalysis - INFO -   RMSE Difference: 8.0% (overfit)
+2024-12-23 19:16:47,053 - RealEstateAnalysis - INFO - 
+Model: MLP
+2024-12-23 19:16:47,054 - RealEstateAnalysis - INFO - ----------
+2024-12-23 19:16:47,054 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,055 - RealEstateAnalysis - INFO -   MAE:  8.42 lakhs
+2024-12-23 19:16:47,055 - RealEstateAnalysis - INFO -   RMSE: 13.05 lakhs
+2024-12-23 19:16:47,055 - RealEstateAnalysis - INFO -   R2:   0.9103
+2024-12-23 19:16:47,055 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,055 - RealEstateAnalysis - INFO -   MAE:  10.67 lakhs
+2024-12-23 19:16:47,056 - RealEstateAnalysis - INFO -   RMSE: 13.54 lakhs
+2024-12-23 19:16:47,056 - RealEstateAnalysis - INFO -   R2:   0.9154
+2024-12-23 19:16:47,056 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,057 - RealEstateAnalysis - INFO -   RMSE Difference: 3.8% (overfit)
+2024-12-23 19:16:47,058 - RealEstateAnalysis - INFO - 
+Model: Lasso
+2024-12-23 19:16:47,058 - RealEstateAnalysis - INFO - ------------
+2024-12-23 19:16:47,058 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,059 - RealEstateAnalysis - INFO -   MAE:  11.08 lakhs
+2024-12-23 19:16:47,059 - RealEstateAnalysis - INFO -   RMSE: 17.11 lakhs
+2024-12-23 19:16:47,059 - RealEstateAnalysis - INFO -   R2:   0.8460
+2024-12-23 19:16:47,059 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,059 - RealEstateAnalysis - INFO -   MAE:  10.31 lakhs
+2024-12-23 19:16:47,061 - RealEstateAnalysis - INFO -   RMSE: 13.75 lakhs
+2024-12-23 19:16:47,061 - RealEstateAnalysis - INFO -   R2:   0.9128
+2024-12-23 19:16:47,061 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,061 - RealEstateAnalysis - INFO -   RMSE Difference: 19.6% (underfit)
+2024-12-23 19:16:47,062 - RealEstateAnalysis - INFO - 
+Model: Ridge
+2024-12-23 19:16:47,062 - RealEstateAnalysis - INFO - ------------
+2024-12-23 19:16:47,063 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,063 - RealEstateAnalysis - INFO -   MAE:  10.83 lakhs
+2024-12-23 19:16:47,063 - RealEstateAnalysis - INFO -   RMSE: 16.43 lakhs
+2024-12-23 19:16:47,063 - RealEstateAnalysis - INFO -   R2:   0.8580
+2024-12-23 19:16:47,063 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,064 - RealEstateAnalysis - INFO -   MAE:  9.80 lakhs
+2024-12-23 19:16:47,064 - RealEstateAnalysis - INFO -   RMSE: 12.79 lakhs
+2024-12-23 19:16:47,064 - RealEstateAnalysis - INFO -   R2:   0.9246
+2024-12-23 19:16:47,064 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,065 - RealEstateAnalysis - INFO -   RMSE Difference: 22.2% (underfit)
+2024-12-23 19:16:47,066 - RealEstateAnalysis - INFO - 
+Model: CatBoost
+2024-12-23 19:16:47,067 - RealEstateAnalysis - INFO - ---------------
+2024-12-23 19:16:47,067 - RealEstateAnalysis - INFO - Training Metrics:
+2024-12-23 19:16:47,067 - RealEstateAnalysis - INFO -   MAE:  1.72 lakhs
+2024-12-23 19:16:47,067 - RealEstateAnalysis - INFO -   RMSE: 2.22 lakhs
+2024-12-23 19:16:47,067 - RealEstateAnalysis - INFO -   R2:   0.9974
+2024-12-23 19:16:47,068 - RealEstateAnalysis - INFO - 
+Test Metrics:
+2024-12-23 19:16:47,068 - RealEstateAnalysis - INFO -   MAE:  8.03 lakhs
+2024-12-23 19:16:47,069 - RealEstateAnalysis - INFO -   RMSE: 12.46 lakhs
+2024-12-23 19:16:47,069 - RealEstateAnalysis - INFO -   R2:   0.9284
+2024-12-23 19:16:47,069 - RealEstateAnalysis - INFO - 
+Model Stability:
+2024-12-23 19:16:47,070 - RealEstateAnalysis - INFO -   RMSE Difference: 461.7% (overfit)
+2024-12-23 19:16:47,074 - RealEstateAnalysis - INFO - 
+Model Comparison Results (saved to reports/model_comparison.csv):
+2024-12-23 19:16:47,078 - RealEstateAnalysis - INFO - 
+      Model  Train MAE  Train RMSE  Train R2   Test MAE  Test RMSE   Test R2
+0   XGBoost   0.014141    0.019592  1.000000   6.681264   9.410381  0.959164
+1  LightGBM   7.055888   10.039001  0.946960   7.789417  10.837336  0.945841
+2       MLP   8.416412   13.053114  0.910329  10.666956  13.543630  0.915415
+3     Lasso  11.081460   17.106561  0.845991  10.309981  13.751449  0.912799
+4     Ridge  10.833686   16.426829  0.857987   9.802418  12.787600  0.924595
+5  CatBoost   1.722115    2.218457  0.997410   8.027743  12.461870  0.928387
+2024-12-23 19:16:47,080 - RealEstateAnalysis - INFO - 
+==================================================
+2024-12-23 19:16:47,081 - RealEstateAnalysis - INFO - Best Performing Model: XGBoost
+2024-12-23 19:16:47,081 - RealEstateAnalysis - INFO - Best Test RMSE: 9.41 lakhs
+2024-12-23 19:16:47,082 - RealEstateAnalysis - INFO - ==================================================
+2024-12-23 19:16:47,082 - RealEstateAnalysis - INFO - 
+Calculating prediction intervals...
+2024-12-23 19:16:47,083 - RealEstateAnalysis.ModelEvaluator - INFO - Calculating prediction intervals with 95.0% confidence
+2024-12-23 19:16:47,095 - RealEstateAnalysis.ModelEvaluator - INFO - Average margin of error: 18.16 lakhs
+2024-12-23 19:16:47,097 - RealEstateAnalysis - INFO - 
+Price Predictions (saved to reports/price_predictions.csv):
+2024-12-23 19:16:47,098 - RealEstateAnalysis - INFO - 
+Sample of Price Ranges (in lakhs):
+2024-12-23 19:16:47,102 - RealEstateAnalysis - INFO - 
+     Actual   Predicted  Lower_Bound  Upper_Bound
+95   187.00  177.754730   159.591354   195.918106
+15    40.00   35.380081    17.216705    53.543457
+30    73.00   77.901787    59.738411    96.065163
+158   87.00   75.956612    57.793236    94.119987
+128  177.00  187.052185   168.888809   205.215561
+115  118.00  118.566910   100.403534   136.730286
+69    45.75   49.544243    31.380867    67.707619
+170   58.95   66.305237    48.141861    84.468613
+174   53.99   42.680004    24.516628    60.843380
+45    80.00   85.161934    66.998558   103.325310
+2024-12-23 19:16:47,104 - RealEstateAnalysis - INFO - 
+Prediction Statistics:
+2024-12-23 19:16:47,105 - RealEstateAnalysis - INFO - Average Prediction Error: 6.68 lakhs
+2024-12-23 19:16:47,106 - RealEstateAnalysis - INFO - Error Standard Deviation: 6.71 lakhs
+2024-12-23 19:16:47,106 - RealEstateAnalysis - INFO - 90% of predictions are within: ±16.72 lakhs
+2024-12-23 19:16:47,107 - RealEstateAnalysis - INFO - 
+Confidence Interval Statistics:
+2024-12-23 19:16:47,108 - RealEstateAnalysis - INFO - Average Interval Width: 36.33 lakhs
+2024-12-23 19:16:47,108 - RealEstateAnalysis - INFO - Actual Coverage: 95.0%
+2024-12-23 19:16:47,114 - RealEstateAnalysis - INFO - Results summary saved to reports/analysis_summary.txt
+2024-12-23 19:16:47,114 - RealEstateAnalysis - INFO - Optimizing LightGBM model...
+2024-12-23 19:16:47,115 - RealEstateAnalysis.ModelTrainer - INFO - Starting LightGBM optimization with 50 trials
+2024-12-23 19:17:02,933 - RealEstateAnalysis.ModelTrainer - INFO - LightGBM optimization completed
+2024-12-23 19:17:02,934 - RealEstateAnalysis.ModelTrainer - INFO - Best parameters: {'n_estimators': 771, 'learning_rate': 0.07212588102633516, 'max_depth': 6, 'num_leaves': 20, 'reg_alpha': 0.04808521135002204, 'reg_lambda': 0.137635612127011, 'min_child_weight': 0.06943215108372544, 'subsample': 0.881521931522638, 'colsample_bytree': 0.7564788098827505, 'min_child_samples': 10}
+2024-12-23 19:17:03,251 - RealEstateAnalysis - INFO - Generating visualizations...
+2024-12-23 19:17:03,252 - RealEstateAnalysis.DataVisualizer - INFO - Creating price distribution plot
+2024-12-23 19:17:03,984 - RealEstateAnalysis.DataVisualizer - INFO - Saved plot to reports/figures\price_distribution.png
+2024-12-23 19:17:03,984 - RealEstateAnalysis.DataVisualizer - INFO - Creating area distribution plot
+2024-12-23 19:17:04,287 - RealEstateAnalysis.DataVisualizer - INFO - Saved plot to reports/figures\area_distribution.png
+2024-12-23 19:17:04,287 - RealEstateAnalysis.DataVisualizer - INFO - Creating price by property type plot
+2024-12-23 19:17:04,607 - RealEstateAnalysis.DataVisualizer - INFO - Saved plot to reports/figures\price_by_property_type.png
+2024-12-23 19:17:04,607 - RealEstateAnalysis.DataVisualizer - INFO - Creating model results plots
+2024-12-23 19:17:05,008 - RealEstateAnalysis.DataVisualizer - INFO - Saved plot to reports/figures\model_results.png
+2024-12-23 19:17:05,008 - RealEstateAnalysis.DataVisualizer - INFO - Creating amenities analysis plot
+2024-12-23 19:17:05,470 - RealEstateAnalysis.DataVisualizer - INFO - Saved plot to reports/figures\amenities_analysis.png
+2024-12-23 19:17:05,471 - RealEstateAnalysis - INFO - 
+Pipeline completed successfully in 21.22 seconds
+2024-12-23 19:17:05,471 - RealEstateAnalysis - INFO - 
+Results have been saved in:
+2024-12-23 19:17:05,471 - RealEstateAnalysis - INFO - - reports/model_comparison.csv (Model performance comparison)
+2024-12-23 19:17:05,472 - RealEstateAnalysis - INFO - - reports/price_predictions.csv (Detailed price predictions)
+2024-12-23 19:17:05,472 - RealEstateAnalysis - INFO - - reports/analysis_summary.txt (Comprehensive analysis)
+2024-12-23 19:17:05,472 - RealEstateAnalysis - INFO - - reports/figures/ (Visualizations)

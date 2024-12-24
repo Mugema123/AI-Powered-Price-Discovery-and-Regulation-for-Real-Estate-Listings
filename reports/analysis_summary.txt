@@ -1,0 +1,105 @@
+==================================================
+MODEL COMPARISON
+==================================================
+
+Model: XGBoost
+--------------
+Training Metrics:
+  MAE:  0.01 lakhs
+  RMSE: 0.02 lakhs
+  R2:   1.0000
+
+Test Metrics:
+  MAE:  6.68 lakhs
+  RMSE: 9.41 lakhs
+  R2:   0.9592
+
+Model: LightGBM
+---------------
+Training Metrics:
+  MAE:  7.06 lakhs
+  RMSE: 10.04 lakhs
+  R2:   0.9470
+
+Test Metrics:
+  MAE:  7.79 lakhs
+  RMSE: 10.84 lakhs
+  R2:   0.9458
+
+Model: MLP
+----------
+Training Metrics:
+  MAE:  8.42 lakhs
+  RMSE: 13.05 lakhs
+  R2:   0.9103
+
+Test Metrics:
+  MAE:  10.67 lakhs
+  RMSE: 13.54 lakhs
+  R2:   0.9154
+
+Model: Lasso
+------------
+Training Metrics:
+  MAE:  11.08 lakhs
+  RMSE: 17.11 lakhs
+  R2:   0.8460
+
+Test Metrics:
+  MAE:  10.31 lakhs
+  RMSE: 13.75 lakhs
+  R2:   0.9128
+
+Model: Ridge
+------------
+Training Metrics:
+  MAE:  10.83 lakhs
+  RMSE: 16.43 lakhs
+  R2:   0.8580
+
+Test Metrics:
+  MAE:  9.80 lakhs
+  RMSE: 12.79 lakhs
+  R2:   0.9246
+
+Model: CatBoost
+---------------
+Training Metrics:
+  MAE:  1.72 lakhs
+  RMSE: 2.22 lakhs
+  R2:   0.9974
+
+Test Metrics:
+  MAE:  8.03 lakhs
+  RMSE: 12.46 lakhs
+  R2:   0.9284
+
+
+==================================================
+BEST MODEL: LightGBM
+==================================================
+
+PREDICTION STATISTICS
+--------------------
+Average Prediction Error: 7.79 lakhs
+Error Standard Deviation: 7.63 lakhs
+90% of predictions are within: ±14.67 lakhs
+
+CONFIDENCE INTERVAL STATISTICS
+------------------------------
+Average Interval Width: 42.43 lakhs
+Actual Coverage: 92.5%
+
+SAMPLE PREDICTIONS
+-----------------
+     Actual   Predicted  Lower_Bound  Upper_Bound
+95   187.00  179.464995   158.247669   200.682321
+15    40.00   39.350772    18.133446    60.568098
+30    73.00   72.516065    51.298739    93.733391
+158   87.00   83.424238    62.206912   104.641564
+128  177.00  145.450604   124.233278   166.667930
+115  118.00  114.140397    92.923071   135.357723
+69    45.75   60.758415    39.541089    81.975741
+170   58.95   67.436576    46.219250    88.653902
+174   53.99   41.253291    20.035965    62.470617
+45    80.00   85.882099    64.664773   107.099425
